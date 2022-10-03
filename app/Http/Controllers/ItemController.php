@@ -17,7 +17,8 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        return view('item.index', compact('items'));
+        $type = Item::TYPE;
+        return view('item.index', compact('items', 'type'));
     }
 
     /**
@@ -27,8 +28,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        $items = Item::all();
-        return view('item.create', compact('items'));
+        $type = Item::TYPE;
+        return view('item.create', compact('type'));
     }
 
     /**
@@ -41,7 +42,7 @@ class ItemController extends Controller
     {
         Item::create([
             'id' => 0,
-            'user_id' => $request->user_id,
+            'user_id' => 1, //auth::id()
             'name' => $request->name,
             'type' => $request->type,
             'detail' => $request->detail
@@ -82,9 +83,9 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         $update = [
-            'user_id' => $request->user_id,
+            'user_id' => 1, //auth::id()
             'name' => $request->name,
-            'status' => $request->status,
+            'status' => $request->status ?? "",
             'type' => $request->type,
             'detail' => $request->detail
         ];
