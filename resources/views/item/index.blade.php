@@ -10,7 +10,7 @@
 
 <body>
 
-    <div style="width: 1000px; margin: 100px auto;">
+    <div style="width: 1400px; margin: 100px auto;">
         <div style="text-align: center;">
             <h1>一覧</h1>
         </div>
@@ -24,20 +24,20 @@
                 <tr>
                     <th style="width: 80px;">商品ID</th>
                     <th style="width: 160px;">商品名</th>
-                    <th style="width: 120px;">ステータス</th>
-                    <th style="width: 60px;">種別</th>
+                    <th style="width: 120px;">種別</th>
                     <th style="width: 300px;">詳細</th>
-                    <th style="width: 300px;">登録日時</th>
-                    <th style="width: 300px;">更新日時</th>
+                    <th style="width: 100px;">ステータス</th>
+                    <th style="width: 200px;">登録日時</th>
+                    <th style="width: 200px;">更新日時</th>
                     <th style="width: 60px;"></th>
                 </tr>
                 @foreach ($items as $item)
                 <tr>
-                    <td style="padding-left: 10px; word-break:break-all;">{{ $item->user_id }}</td>
+                    <td style="padding-left: 10px; word-break:break-all;">{{ $item->id }}</td>
                     <td style="padding-left: 10px; word-break:break-all;">{{ $item->name }}</td>
-                    <td style="padding-left: 10px; word-break:break-all;">{{ $item->status }}</td>
-                    <td style="padding-left: 10px; word-break:break-all;">{{ $item->type }}</td>
+                    <td style="padding-left: 10px; word-break:break-all;">{{ $type[$item->type] }}</td>
                     <td style="padding-left: 10px; word-break:break-all;">{{ $item->detail }}</td>
+                    <td style="padding-left: 10px; word-break:break-all;">@if($item->status)公開 @else 停止 @endif</td>
                     <td style="padding-left: 10px; word-break:break-all;">{{ $item->created_at }}</td>
                     <td style="padding-left: 10px; word-break:break-all;">{{ $item->updated_at }}</td>
                     <td style="padding-left: 10px;"><a href="/item/{{ $item->id }}/edit">編集</a></td>
