@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
 
 /*
@@ -15,5 +16,20 @@ use App\Http\Controllers\SearchController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('account.login');
 });
+
+
+//ユーザー登録画面へ
+Route::get('/register', [AccountController::class, 'register'])->name('account.register');
+//ログイン画面へ遷移
+Route::get('/login', [AccountController::class, 'login'])->name('account.login');
+//仮ホーム画面へ
+Route::get('/home', [AccountController::class, 'home'])->name('account.home');
+
+
+//会員情報のデータベースへの登録。
+Route::post('/store', [AccountController::class, 'store'])->name('account.store');
+//ログイン認証処理
+Route::post('/signin', [AccountController::class, 'signin'])->name('account.signin');
+

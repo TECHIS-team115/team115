@@ -7,10 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    //Model⇄テーブル
+    protected $table = 'users';
+
+    //テーブル⇄id
+    protected $primarykey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -42,4 +49,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * ユーザーを登録する。
+     */
+    public function InsertUser($request)
+    {
+        //入力された各情報を基にデータベースへ登録する。
+        return $this->create([
+            'name' => $request->user_name,
+            'email' => $request->user_email,
+            'password' => Hash::make($request->user_password),
+            'role' => '0',
+        ]);
+    }
+
 }
