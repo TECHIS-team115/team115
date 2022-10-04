@@ -17,3 +17,8 @@ use App\Http\Controllers\SearchController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/Search', [App\Http\Controllers\SearchController::class, 'index']);
+Route::get('/Search/detail/{id}', [App\Http\Controllers\SearchController::class, 'detailIndex']);
+
+Route::post('/Search', [App\Http\Controllers\SearchController::class, 'getIndex'])->name('Search');

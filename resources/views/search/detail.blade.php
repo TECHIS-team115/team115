@@ -20,41 +20,16 @@
         <div class="collapse navbar-collapse justify-content-center">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">新規登録</a>
+                    <h4 style="color: white; margin-right: 150px;">詳細画面</h4>
+                </li>
+                <li class="nav-item active">
+                    <a href="/Search" style="color: white;"><h4>一覧画面へ戻る</h4></a>
                 </li>
             </ul>
         </div>
-        <form  action="{{ route('Search') }}" method="post" class="form-inline">
-            @csrf
-            <input class="form-control mr-sm-1" type="text" name="keyword" placeholder="キーワード検索" value="@if (isset($keyword)) {{ $keyword }} @endif">
-            <button class="btn btn-primary" type="submit">検索</button>
-        </form>
-    </nav>
-        <div style="text-align: center;">
-            <h4 style="font-weight: bold; margin: 25px 0;">名前をクリックすると詳細画面が出てきます。</h4>
-        </div>    
-        <div class="col-15 ml-8">
-            <table class="table table-hover text-center">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>名前</th>
-                        <th>種別</th>
-                        <th>更新日</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($data as $val)
-                    <tr>
-                        <td>{{ $val->id }}</td>
-                        <td><a href="/Search/detail/{{ $val->id }}">{{ $val->name }}</a></td>
-                        <td>{{ $val->type }}</td>
-                        <td>{{ $val->updated_at }}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+    </nav> 
+    <h3 style="text-align: center;">{{ $item->detail }}</h3>
+
   </div>
 
 
