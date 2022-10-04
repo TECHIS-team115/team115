@@ -17,3 +17,11 @@ use App\Http\Controllers\SearchController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//一覧画面の表示
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
+
+//編集画面の表示
+Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit');
+
+//
