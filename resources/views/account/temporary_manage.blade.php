@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h4>仮ホーム</h4>
+    <h4>ユーザー編集画面</h4>
 
 <li><a href="{{ route('account.logout') }}">ログアウト</a></li>
 </div>

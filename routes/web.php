@@ -32,4 +32,14 @@ Route::get('/home', [AccountController::class, 'home'])->name('account.home');
 Route::post('/store', [AccountController::class, 'store'])->name('account.store');
 //ログイン認証処理
 Route::post('/signin', [AccountController::class, 'signin'])->name('account.signin');
+//ログアウト処理
+Route::get('/logout', [AccountController::class, 'signout'])->name('account.logout');
+
+//管理者権限でのアクセス制御
+Route::middleware(['auth','can:adminUser'])->group(function(){
+    //ユーザー管理画面への制限
+    Route::get('/adminuserlist', [AccountController::class, 'manage'])->name('admin.manage');
+    //商品編集画面への制限
+    Route::get('/adminlist', [AccountController::class, 'itemList'])->name('admin.list');
+});
 

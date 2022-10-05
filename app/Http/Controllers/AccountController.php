@@ -19,7 +19,11 @@ class AccountController extends Controller
      */
     public function login()
     {
-        return view('account.login');
+        if(Auth::check()){
+            return view('account.temporary');
+        } else {
+            return view('account.login');
+        }
     }
 
     /**
@@ -27,15 +31,45 @@ class AccountController extends Controller
      */
     public function register()
     {
-        return view('account.create');
+        if(Auth::check()){
+            return view('account.temporary');
+        } else {
+            return view('account.create');
+        }
     }
 
     /**
-     * 仮ホーム画面への遷移
+     * 仮ホーム画面への遷移。一般ユーザー
      */
     public function home()
     {
-        return view('account.temporary');
+        if(Auth::check()){
+            return view('account.temporary');
+        } else {
+            return view('account.login');
+        }
+    }
+
+    /**
+     * 仮ユーザー編集画面への遷移。adminUser
+     */
+    public function manage(){
+        if(Auth::check()){
+            return view('account.temporary_manage');
+        } else {
+            return view('account.login');
+        }
+    }
+
+    /**
+     * 仮商品一覧への遷移。adminUser
+     */
+    public function itemList(){
+        if(Auth::check()){
+            return view('account.temporary_list');
+        } else {
+            return view('account.login');
+        }
     }
 
     /**
@@ -56,9 +90,10 @@ class AccountController extends Controller
                 'user_email.unique' => 'すでに登録済みのメールアドレスです。',
                 'user_email.email' => 'メールアドレス形式で入力して下さい。',
                 'user_password.required' => 'パスワードを入力して下さい。',
+                'user_password.min' => 'パスワードは最低8文字です。',
+                'user_password.confirmed' => 'パスワードが一致しません。',
                 'user_password_confirmation.required' => '確認用パスワードを入力して下さい。',
-                'user_password_confirmation.min' => 'パスワードは最低8文字です。',
-
+                'user_password_confirmation.min' => '確認用パスワードは最低8文字です。',
             ]
             );
 
@@ -74,15 +109,14 @@ class AccountController extends Controller
     {
         $validated = $request->validate(
             [
-                'user_email' => 'email|required',
+                'user_email' => 'required|email',
                 'user_password' => 'required|min:8'
             ],
             [
-                'user_email.email' => 'メールアドレス形式で入力して下さい。',
                 'user_email.required' => 'メールアドレスを入力して下さい。',
+                'user_email.email' => 'メールアドレス形式で入力して下さい。',
                 'user_password.required' => 'パスワードを入力して下さい。',
                 'user_password.min' => 'パスワードは最低8文字です。',
-
             ]
         );
 
@@ -92,6 +126,14 @@ class AccountController extends Controller
         ])){
             return redirect()->route('account.home');
         }
-        return redirect()->back();
-        }
+            return redirect()->back();
+    }
+
+    /**
+     * ログアウト
+     */
+    public function signout(){
+        Auth::logout();
+        return redirect()->route('account.login');
+    }
 }
