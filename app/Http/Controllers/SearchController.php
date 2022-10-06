@@ -9,10 +9,11 @@ class SearchController extends Controller
 {
     public function index()
     {
-        $data = Item::where('status', '=', 'active')->get();
-        
+        $data = Item::where('status', '=', 'active')->paginate(5, ["*"], 'data-page');
+        $type = Item::TYPE;
         return view('Search.search',[
             'data' => $data,
+            'type' => $type,
         ]);
     }
 
@@ -28,7 +29,7 @@ class SearchController extends Controller
     public function getIndex(Request $rq)
     {
         $keyword = $rq->input('keyword');
-
+        $type = Item::TYPE;
         $query = Item::query();
 
         if(!empty($keyword))
@@ -37,8 +38,8 @@ class SearchController extends Controller
             $query->orWhere('type','like','%'.$keyword.'%');
         }
 
-        $data = $query->orderBy('id','asc')->paginate(5);
-        return view('Search.search')->with('data',$data)->with('keyword',$keyword);
+        $data = $query->orderBy('id','asc')->where('status', '=', 'active')->paginate(5, ["*"], 'data-page');
+        return view('Search.search')->with('data',$data)->with('keyword',$keyword,)->with('type',$type,);
     }
 
 

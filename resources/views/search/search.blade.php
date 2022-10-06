@@ -11,51 +11,56 @@
  
 </head>
 <body>
-  <div class="container">
-    <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark mt-3 mb-3">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <h4 class="navbar-brand">商品管理システム</h4>
-        <div class="collapse navbar-collapse justify-content-center">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">新規登録</a>
-                </li>
-            </ul>
-        </div>
-        <form  action="{{ route('Search') }}" method="post" class="form-inline">
-            @csrf
-            <input class="form-control mr-sm-1" type="text" name="keyword" placeholder="キーワード検索" value="@if (isset($keyword)) {{ $keyword }} @endif">
-            <button class="btn btn-primary" type="submit">検索</button>
-        </form>
-    </nav>
-        <div style="text-align: center;">
-            <h4 style="font-weight: bold; margin: 25px 0;">名前をクリックすると詳細画面が出てきます。</h4>
-        </div>    
-        <div class="col-15 ml-8">
-            <table class="table table-hover text-center">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>名前</th>
-                        <th>種別</th>
-                        <th>更新日</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($data as $val)
-                    <tr>
-                        <td>{{ $val->id }}</td>
-                        <td><a href="/Search/detail/{{ $val->id }}">{{ $val->name }}</a></td>
-                        <td>{{ $val->type }}</td>
-                        <td>{{ $val->updated_at }}</td>
-                    </tr>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark mt-3 mb-3">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h4 class="navbar-brand">商品管理システム</h4>
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">新規登録</a>
+                    </li>
+                </ul>
+            </div>
+            <form  action="{{ route('Search') }}" class="form-inline">
+                @csrf
+                <input class="form-control mr-sm-1" type="text" name="keyword" placeholder="キーワード検索" value="@if (isset($keyword)) {{ $keyword }} @endif">
+                <button class="btn btn-primary" type="submit">検索</button>
+            </form>
+        </nav>
+            <div style="text-align: center;">
+                <h4 style="font-weight: bold; margin: 25px 0;">名前をクリックすると詳細画面が出てきます。</h4>
+            </div>    
+            <div class="col-15 ml-8">
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>名前</th>
+                            <th>種別</th>
+                            <th>更新日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($data as $val)
+                        <tr>
+                            <td>{{ $val->id }}</td>
+                            <td><a href="/Search/detail/{{ $val->id }}">{{ $val->name }}</a></td>
+                            <td>{{ $type[$val->type] }}</td>
+                            <td>{{ $val->updated_at }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>  
+                @foreach ($data as $val)
+                    {{ $val->id }}
                 @endforeach
-                </tbody>
-            </table>
-        </div>
-  </div>
+                {{ $data->appends(request()->query())->links('pagination::bootstrap-4') }}     
+    </div>
+    
 
 
 <!-- Bootstrap Javascript(jQuery含む) -->
