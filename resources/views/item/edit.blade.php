@@ -27,18 +27,16 @@
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 <p>商品名<input type="text" style="width: 40%; padding-left: 10px;" name="name" value="{{ $item->name }}"></p>
+                
                 <P>種別
-                    <select style="width: 40%; padding-left: 10px;" name="type">
-                        <option>エアコン</option>
-                        <option>洗濯機</option>
-                        <option>冷蔵庫</option>
-                        <option>掃除機</option>
-                        <option>テレビ</option>
-                        <option>照明器具</option>
-                        <option>空気清浄機</option>
-                        <option selected hidden>{{ $item->type }}</option>
+                    <select style="width: 40%; padding-left: 10px;" name="type" value="{{ $item->type }}">
+                    @foreach($item as $key => $value)
+                        <option value="{{ $key }}">{{ $value }}</option>
+                        @endforeach
+                    <option selected hidden>{{ $item->type }}</option>
                     </select>
                 </P>
+
                 <p>詳細<textarea type="text" style="width: 40%; padding-left: 10px;" name="detail" value="{{ $item->detail }}">{{ $item->detail }}</textarea></p>
                 <P>ステータス
                     <select style="width: 40%; padding-left: 10px;" name="status" value="{{ $item->status }}">

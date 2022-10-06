@@ -28,13 +28,12 @@
                 <P>
                     <select style="width: 40%; padding-left: 10px;" name="type">
                         @foreach($type as $key => $value)
-                        <option value="{{$key}}">{{$value}}</option>
+                        <option value="{{$key}}">{{ $value }}</option>
                         @endforeach
                         <option disabled selected style="display:none;">種別</option>
                     </select>
                 </P>
                 <p><textarea type="text" style="width: 40%; padding-left: 10px;" name="detail" value="" placeholder="詳細"></textarea></p>
-                <p><input type="text" style="width: 40%; padding-left: 10px;" name="user_id" value="" placeholder="登録者"></p>
 
                 <!-- 登録ボタン -->
                 <div class="form-group">

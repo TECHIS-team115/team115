@@ -15,12 +15,12 @@
             <h1>一覧</h1>
         </div>
 
-        <div class="col-sm-offset-3 col-sm-6">
+        <div class="col-sm-offset-3 col-sm-6" style="padding-bottom: 20px;">
             <button type="button" class="btn btn-primary btn-sm" style="padding: 5px 80px 5px 80px; " onclick="location.href='/item/create'">商品登録</button>
         </div>
 
         <div>
-            <table border="1" style="border-collapse: collapse;">
+            <table border="1" style="border-collapse: collapse; ">
                 <tr>
                     <th style="width: 80px;">商品ID</th>
                     <th style="width: 160px;">商品名</th>

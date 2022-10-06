@@ -51,17 +51,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * 編集画面表示
      *
      * @param  int  $id
@@ -73,6 +62,7 @@ class ItemController extends Controller
         return view('item.edit', compact('item'));
     }
 
+    
     /**
      * 編集機能
      *
