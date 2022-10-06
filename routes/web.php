@@ -18,13 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//一覧画面の表示
+// 一覧画面の表示
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
 
-//編集画面の表示
+// 編集画面の表示
 Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit');
 
-//
+// 更新処理
+
+
 // 一覧画面表示
 Route::get('/item', [App\Http\Controllers\ItemController::class, 'index']);
 
