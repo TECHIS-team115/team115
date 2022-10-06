@@ -24,10 +24,8 @@ Route::get('/', function () {
 Route::get('/register', [AccountController::class, 'register'])->name('account.register');
 //ログイン画面へ遷移
 Route::get('/login', [AccountController::class, 'login'])->name('account.login');
-//仮ホーム画面へ
-Route::get('/home', [AccountController::class, 'home'])->name('account.home');
-
-
+//ホーム画面へ
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 //会員情報のデータベースへの登録。
 Route::post('/store', [AccountController::class, 'store'])->name('account.store');
 //ログイン認証処理
@@ -35,11 +33,34 @@ Route::post('/signin', [AccountController::class, 'signin'])->name('account.sign
 //ログアウト処理
 Route::get('/logout', [AccountController::class, 'signout'])->name('account.logout');
 
+// 一覧画面の表示
+Route::get('/Search', [App\Http\Controllers\SearchController::class, 'index']);
+// 詳細画面の表示
+Route::get('/Search/detail/{id}', [App\Http\Controllers\SearchController::class, 'detailIndex']);
+// キーワード検索
+Route::get('/Search', [App\Http\Controllers\SearchController::class, 'getIndex'])->name('Search');
+
 //管理者権限でのアクセス制御
 Route::middleware(['auth','can:adminUser'])->group(function(){
     //ユーザー管理画面への制限
-    Route::get('/adminuserlist', [AccountController::class, 'manage'])->name('admin.manage');
-    //商品編集画面への制限
-    Route::get('/adminlist', [AccountController::class, 'itemList'])->name('admin.list');
-});
+    Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');    //商品編集画面への制限
+    Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit');
 
+    // 一覧画面表示
+    Route::get('/item', [App\Http\Controllers\ItemController::class, 'index']);
+
+    // 登録画面表示
+    Route::get('/item/create', [App\Http\Controllers\ItemController::class, 'create']);
+
+    // 編集画面表示
+    Route::get('/item/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit']);
+
+    // 登録処理
+    Route::post('/item/create', [App\Http\Controllers\ItemController::class, 'store']);
+
+    // 編集処理
+    Route::put('/item/{id}', [App\Http\Controllers\ItemController::class, 'update']);
+
+    // 削除処理
+    Route::delete('/item/{id}', [App\Http\Controllers\ItemController::class, 'destroy']);
+});
