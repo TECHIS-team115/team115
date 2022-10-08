@@ -10,9 +10,29 @@
 </head>
 <body>
     @include('parts.navi')
-    <div class="conteiner">
-    <h1>商品管理</h1>
+    <div class="container">
+    <h1>新着アイテム</h1>
+    <table class="table">
+      
+        <tr>
+            <th>商品ID</th>
+            <th>商品種別</th>
+            <th>商品名</th>
+            <th>更新日</th>
+            <th>登録日</th>
+        </tr>  
+        @foreach($items as $item)
+        <tr>
+            <td>{{$item->id}}</td>
+            <td>{{$type[$item->type]}}</td>
+            <td>{{$item->name}}</td>
+            <td>{{$item->updated_at}}</td>
+            <td>{{$item->created_at}}</td>
+        </tr>
+        @endforeach
+    </table>
+    <img src="/assets/img/main.jpg" alt="" class="img-fluid"> 
     </div>
-    
+
 </body>
 </html>
