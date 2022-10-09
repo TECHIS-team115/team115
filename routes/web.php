@@ -15,10 +15,6 @@ use App\Http\Controllers\SearchController;
 |
 */
 
-Route::get('/', function () {
-    return view('account.login');
-});
-
 
 //ユーザー登録画面へ
 Route::get('/register', [AccountController::class, 'register'])->name('account.register');
