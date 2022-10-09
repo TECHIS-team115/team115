@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">新規登録</a>
+                        <a class="nav-link" href="/home" style="font-weight: bold;">HOME</a>
                     </li>
                 </ul>
             </div>
