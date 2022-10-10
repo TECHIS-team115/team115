@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->string('status', 100)->default('active');
             $table->tinyInteger('type');
             $table->string('detail', 500);
-            $table->timestamps();
+            $table->timestamps();       
         });
     }
 
