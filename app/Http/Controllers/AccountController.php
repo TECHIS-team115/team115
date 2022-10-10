@@ -51,7 +51,7 @@ class AccountController extends Controller
     }
 
     /**
-     * 仮ユーザー編集画面への遷移。adminUser
+     * 仮ユーザー編集画面への遷移。管理者
      */
     public function manage(){
         if(Auth::check()){
@@ -102,7 +102,7 @@ class AccountController extends Controller
     }
 
     /**
-     * ログイン認証
+     * ログイン認証処理_バリデーション
      */
 
     public function signin(Request $request)
@@ -130,7 +130,7 @@ class AccountController extends Controller
     }
 
     /**
-     * ログアウト
+     * ログアウト処理
      */
     public function signout(){
         Auth::logout();
