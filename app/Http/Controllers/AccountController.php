@@ -20,7 +20,7 @@ class AccountController extends Controller
     public function login()
     {
         if(Auth::check()){
-            return view('account.temporary');
+            return view('account.login');
         } else {
             return view('account.login');
         }
@@ -32,45 +32,46 @@ class AccountController extends Controller
     public function register()
     {
         if(Auth::check()){
-            return view('account.temporary');
-        } else {
             return view('account.create');
-        }
-    }
-
-    /**
-     * 仮ホーム画面への遷移。一般ユーザー
-     */
-    public function home()
-    {
-        if(Auth::check()){
-            return view('account.temporary');
         } else {
             return view('account.login');
         }
     }
 
+    //使用しない。
     /**
-     * 仮ユーザー編集画面への遷移。管理者
+     * ホーム画面への遷移。一般ユーザー
      */
-    public function manage(){
-        if(Auth::check()){
-            return view('account.temporary_manage');
-        } else {
-            return view('account.login');
-        }
-    }
+    //public function home()
+    //{
+    //    if(Auth::check()){
+    //        return view('home.index');
+    //    } else {
+    //        return view('account.login');
+    //    }
+    //}
 
     /**
-     * 仮商品一覧への遷移。adminUser
+     * ユーザー編集画面への遷移。管理者
      */
-    public function itemList(){
-        if(Auth::check()){
-            return view('account.temporary_list');
-        } else {
-            return view('account.login');
-        }
-    }
+    //public function manage(){
+    //    if(Auth::check()){
+    //        return view('edit');
+    //    } else {
+    //        return view('account.login');
+    //    }
+    //}
+
+    /**
+     * 仮商品一覧への遷移。管理者
+     */
+    //public function itemList(){
+    //    if(Auth::check()){
+    //        return view('account.temporary_list');
+    //    } else {
+    //        return view('account.login');
+    //    }
+    //}
 
     /**
      * データベース登録_バリデーション
@@ -124,7 +125,7 @@ class AccountController extends Controller
             'email' => $request->input('user_email'),
             'password' => $request->input('user_password')
         ])){
-            return redirect()->route('account.home');
+            return redirect()->route('home.index');
         }
             return redirect()->back();
     }

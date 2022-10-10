@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ Route::get('/register', [AccountController::class, 'register'])->name('account.r
 //ログイン画面へ遷移
 Route::get('/login', [AccountController::class, 'login'])->name('account.login');
 //ホーム画面へ
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 //会員情報のデータベースへの登録。
 Route::post('/store', [AccountController::class, 'store'])->name('account.store');
 //ログイン認証処理
@@ -34,11 +36,11 @@ Route::post('/signin', [AccountController::class, 'signin'])->name('account.sign
 //ログアウト処理
 Route::get('/logout', [AccountController::class, 'signout'])->name('account.logout');
 // 一覧画面の表示
-Route::get('/Search', [App\Http\Controllers\SearchController::class, 'index']);
+Route::get('/Search', [SearchController::class, 'index']);
 // 詳細画面の表示
-Route::get('/Search/detail/{id}', [App\Http\Controllers\SearchController::class, 'detailIndex']);
+Route::get('/Search/detail/{id}', [SearchController::class, 'detailIndex']);
 // キーワード検索
-Route::get('/Search', [App\Http\Controllers\SearchController::class, 'getIndex'])->name('Search');
+Route::get('/Search', [SearchController::class, 'getIndex'])->name('Search');
 
 ////  ↑↑一般ユーザーでのアクセス制御↑↑  ////
 
