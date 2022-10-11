@@ -13,7 +13,7 @@
     <div class="container">
     <h1>新着アイテム</h1>
     <table class="table">
-      
+    
         <tr>
             <th>商品ID</th>
             <th>商品種別</th>

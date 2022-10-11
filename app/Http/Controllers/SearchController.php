@@ -7,6 +7,11 @@ use App\Models\Item;
 
 class SearchController extends Controller
 {
+        //ログインしていないときはログイン画面へ遷移させる。20221010_KojiYoshdia
+        public function __construct(){
+            $this->middleware('auth');
+        }
+
     public function index()
     {
         $data = Item::where('status', '=', 'active')->paginate(5, ["*"], 'data-page');
