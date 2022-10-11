@@ -55,7 +55,7 @@ class User extends Authenticatable
      */
     public function InsertUser($request)
     {
-        //入力された各情報を基にデータベースへ登録する。
+        //create.blade.phpで入力された各情報を基にデータベースへ登録する。
         return $this->create([
             'name' => $request->user_name,
             'email' => $request->user_email,
