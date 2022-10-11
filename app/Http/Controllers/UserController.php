@@ -8,6 +8,11 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+        //ログインしていないときはログイン画面へ遷移させる。20221010_KojiYoshida
+        public function __construct(){
+            $this->middleware('auth');
+        }
+
     /**
         * ユーザー一覧
         *
