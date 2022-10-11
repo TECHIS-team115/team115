@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Item;
 
+use App\Models\Post;
+
 class ItemController extends Controller
 
 {
@@ -40,6 +42,20 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        // バリデーション
+        $request->validate(
+            [
+                'name' => 'required',
+                'type' => 'required',
+                'detail' => 'required'
+            ],
+            [
+                'name.required' => '商品名を入力してください',
+                'type.required' => '商品種別を選択してください',
+                'detail.required' => '詳細を入力してください'
+            ]
+        );
+
         Item::create([
             'id' => 0,
             'user_id' => 1, //auth::id()
@@ -47,6 +63,7 @@ class ItemController extends Controller
             'type' => $request->type,
             'detail' => $request->detail
         ]);
+
         return redirect('/item');
     }
 
@@ -59,12 +76,13 @@ class ItemController extends Controller
     public function edit($id)
     {
         $item = Item::find($id);
-        return view('item.edit', compact('item'));
+        $type = Item::TYPE;
+        return view('item.edit', compact('item','type'));
     }
 
-    
+
     /**
-     * 編集機能
+     * 更新機能
      *
      * @param  int  $id
      * @param  \Illuminate\Http\Request  $request
@@ -72,6 +90,20 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // バリデーション
+        $request->validate(
+            [
+                'name' => 'required',
+                'type' => 'required',
+                'detail' => 'required'
+            ],
+            [
+                'name.required' => '商品名を入力してください',
+                'type.required' => '商品種別を選択してください',
+                'detail.required' => '詳細を入力してください'
+            ]
+        );
+
         $update = [
             'user_id' => 1, //auth::id()
             'name' => $request->name,
