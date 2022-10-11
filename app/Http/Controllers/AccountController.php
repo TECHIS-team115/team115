@@ -34,7 +34,7 @@ class AccountController extends Controller
         if(Auth::check()){
             return view('account.create');
         } else {
-            return view('account.login');
+            return view('account.create');
         }
     }
 
