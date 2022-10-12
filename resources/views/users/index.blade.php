@@ -7,11 +7,10 @@
 <title>ユーザー一覧</title>
 </head>
 <body>
+@include('parts.navi')
     <div class="container">
         <!-- マージンを上下に設定 -->
         <div class="my-5">
-        <!-- 青色ボタンを設定 -->
-        <a class="btn btn-primary" href="/create">ホーム</a>
         </div>
         <hr>
         <h1 class="my-2">ユーザー一覧</h1>
