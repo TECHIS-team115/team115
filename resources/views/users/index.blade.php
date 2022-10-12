@@ -7,6 +7,7 @@
 <title>ユーザー一覧</title>
 </head>
 <body>
+@include('parts.navi')
     <div class="container">
         <!-- マージンを上下に設定 -->
         <div class="my-5">

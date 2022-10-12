@@ -7,6 +7,7 @@
 <title>編集画面</title>
 </head>
 <body>
+@include('parts.navi')
     <div class="container">
         <!-- マージンを上下に設定 -->
         <div class="my-5">
@@ -18,13 +19,14 @@
             <td>{{$user->id}}</td>
         </tr>       
     
-    <form method="post" action="/user/update" enctype="multipart/form-data">
+    <form method="post" action="/user/edit" enctype="multipart/form-data">
+        @csrf
         <p>氏名<br>    
             <input type="text" name="name" value="{{$user->name}}"><br>
         <p>メールアドレス<br>    
-            <input type="text" name="mail" value="{{$user->email}}"><br>
+            <input type="text" name="email" value="{{$user->email}}"><br>
             <br>
-            <label><input type="checkbox" name="role" value="1" @if($user->role) cheked @endif>管理者権限</label><br>
+            <label><input type="checkbox" name="role" value="1" @if($user->role) checked @endif>管理者権限</label><br>
             <input type="submit" value="更新" class="btn btn-primary">
             <input type="hidden" name="id" value="{{$user->id}}">
     </form>
