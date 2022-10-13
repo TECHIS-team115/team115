@@ -23,8 +23,10 @@
         @csrf
         <p>氏名<br>    
             <input type="text" name="name" value="{{$user->name}}"><br>
+            @if($errors->has('name'))<br><span>{{ $errors->first('name') }}</span> @endif
         <p>メールアドレス<br>    
             <input type="text" name="email" value="{{$user->email}}"><br>
+            @if($errors->has('email'))<br><span>{{ $errors->first('email') }}</span> @endif
             <br>
             <label><input type="checkbox" name="role" value="1" @if($user->role) checked @endif>管理者権限</label><br>
             <input type="submit" value="更新" class="btn btn-primary">
