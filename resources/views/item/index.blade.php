@@ -39,7 +39,7 @@
                         <td style="padding-left: 10px; word-break:break-all;">{{ $item->id }}</td>
                         <td style="padding-left: 10px; word-break:break-all;">{{ $type[$item->type] }}</td>
                         <td style="padding-left: 10px; word-break:break-all;">{{ $item->name }}</td>
-                        <td style="padding-left: 10px; word-break:break-all;">{{ $item->detail }}</td>
+                        <td style="padding-left: 10px; word-break:break-all; white-space:pre-wrap;">{{ $item->detail }}</td>
                         <td style="padding-left: 10px; word-break:break-all;">{{ $item->created_at }}</td>
                         <td style="padding-left: 10px; word-break:break-all;">{{ $item->updated_at }}</td>
                         <td style="padding-left: 10px; word-break:break-all;">@if($item->status)公開 @else 停止 @endif</td>
