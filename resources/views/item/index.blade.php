@@ -24,13 +24,13 @@
                 <table class="table table-hover table-bordered">
                     <thead class="table-light" style="text-align: center;">
                         <tr>
-                            <th style="width: 3%;">ID</th>
+                            <th style="width: 4%;">ID</th>
                             <th style="width: 8%;">種別</th>
-                            <th style="width: 17%;">商品名</th>
-                            <th style="width: 32%;">詳細</th>
-                            <th style="width: 14%;">登録日時</th>
-                            <th style="width: 14%;">更新日時</th>
-                            <th style="width: 7%;">ステータス</th>
+                            <th style="width: 18%;">商品名</th>
+                            <th style="width: 33%;">詳細</th>
+                            <th style="width: 13%;">登録日時</th>
+                            <th style="width: 13%;">更新日時</th>
+                            <th style="width: 6%;">ステータス</th>
                             <th style="width: 5%;"></th>
                         </tr>
                     </thead>

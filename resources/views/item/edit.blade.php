@@ -27,9 +27,9 @@
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <p style="margin-bottom: 0">商品名<span style="padding-left: 10px;" class="help-block text-danger">{{$errors->first('name')}}</span></p>
-                    <p><input type="text" style="width: 60%; padding-left: 10px; margin: 0 0 20px 0;" name="name" value="{{ $item->name }}"></p>
+                    <p><input type="text" style="width: 60%; padding-left: 10px; margin: 0 0 20px 0;" name="name" value="{{ old(('name'), $item->name) }}"></p>
 
-                    <P style="margin-bottom: 0">商品種別<span style="padding-left: 10px;" class="help-block text-danger">{{$errors->first('type')}}</span></P>
+                    <P style="margin-bottom: 0">種別<span style="padding-left: 10px;" class="help-block text-danger">{{$errors->first('type')}}</span></P>
                     <p>
                         <select style="width: 30%; padding-left: 10px; margin: 0 0 20px 0;" name="type" value="{{ $item->type }}">
                             @foreach($type as $key => $value)
@@ -39,8 +39,8 @@
                     </P>
 
                     <p style="margin-bottom: 0">詳細<span style="padding-left: 10px;" class="help-block text-danger">{{$errors->first('detail')}}</span></p>
-                    <p><textarea type="text" style="width: 80%; padding-left: 10px; margin: 0 0 20px 0;" name="detail" value="{{ $item->detail }}">{{ $item->detail }}</textarea></p>
-                    
+                    <p><textarea type="text" style="width: 80%; padding-left: 10px; margin: 0 0 20px 0;" name="detail" value="{{ $item->detail }}">{{ old(('detail'), $item->detail) }}</textarea></p>
+
 
                     <P style="margin-bottom: 0">ステータス</P>
                     <p>

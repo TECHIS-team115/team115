@@ -50,14 +50,16 @@ class ItemController extends Controller
         // バリデーション
         $request->validate(
             [
-                'name' => 'required',
+                'name' => 'required|max:100',
                 'type' => 'required',
-                'detail' => 'required'
+                'detail' => 'required|max:500'
             ],
             [
-                'name.required' => '商品名を入力してください',
-                'type.required' => '商品種別を選択してください',
-                'detail.required' => '詳細を入力してください'
+                'name.required' => '*商品名を入力してください',
+                'name.max' => '*商品名は100文字以下で入力してください',
+                'type.required' => '*種別を選択してください',
+                'detail.required' => '*詳細を入力してください',
+                'detail.max' => '*商品名は500文字以下で入力してください'
             ]
         );
 
@@ -98,14 +100,16 @@ class ItemController extends Controller
         // バリデーション
         $request->validate(
             [
-                'name' => 'required',
+                'name' => 'required|max:100',
                 'type' => 'required',
-                'detail' => 'required'
+                'detail' => 'required|max:500'
             ],
             [
-                'name.required' => '商品名を入力してください',
-                'type.required' => '商品種別を選択してください',
-                'detail.required' => '詳細を入力してください'
+                'name.required' => '*商品名を入力してください',
+                'name.max' => '*商品名は100文字以下で入力してください',
+                'type.required' => '*種別を選択してください',
+                'detail.required' => '*詳細を入力してください',
+                'detail.max' => '*商品名は500文字以下で入力してください'
             ]
         );
 

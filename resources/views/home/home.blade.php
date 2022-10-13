@@ -13,29 +13,6 @@
 <body>
     @include('parts.navi')
     <div class="container">
-<<<<<<< HEAD
-        <h1>新着アイテム</h1>
-        <table class="table">
-
-            <tr>
-                <th>商品ID</th>
-                <th>商品種別</th>
-                <th>商品名</th>
-                <th>更新日</th>
-                <th>登録日</th>
-            </tr>
-            @foreach($items as $item)
-            <tr>
-                <td>{{$item->id}}</td>
-                <td>{{$type[$item->type]}}</td>
-                <td>{{$item->name}}</td>
-                <td>{{$item->updated_at}}</td>
-                <td>{{$item->created_at}}</td>
-            </tr>
-            @endforeach
-        </table>
-        <img src="/assets/img/main.jpg" alt="" class="img-fluid">
-=======
     <h1>新着アイテム</h1>
     <table class="table">
     
@@ -57,7 +34,6 @@
         @endforeach
     </table>
     <img src="/assets/img/main.jpg" alt="" class="img-fluid"> 
->>>>>>> 1a9e3feecaad9dcd18b835108540ae6c51cbe876
     </div>
 
 </body>

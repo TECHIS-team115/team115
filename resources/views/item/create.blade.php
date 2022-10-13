@@ -28,10 +28,10 @@
                     <p style="margin-bottom: 0">商品名<span style="padding-left: 10px;" class="help-block text-danger">{{$errors->first('name')}}</span></p>
                     <p><input type="text" style="width: 60%; padding-left: 10px; margin-bottom: 20px;" name="name" value="{{ old('name') }}" placeholder="商品名を入力"></p>
 
-                    <P style="margin-bottom: 0">商品種別<span style="padding-left: 10px;" class="help-block text-danger">{{$errors->first('type')}}</span></P>
+                    <P style="margin-bottom: 0">種別<span style="padding-left: 10px;" class="help-block text-danger">{{$errors->first('type')}}</span></P>
                     <P>
                         <select style="width: 30%; padding-left: 10px; margin-bottom: 20px;" name="type">
-                            <option value="" style="display: none;">商品種別を選択</option>
+                            <option value="" style="display: none;"></option>
                             @foreach($type as $key => $value)
                             <option value="{{$key}}" {{old('type')==$key ? "selected" : ""}}>{{ $value }}</option>
                             @endforeach
