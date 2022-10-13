@@ -12,25 +12,10 @@
 </head>
 <body>
   <div class="container">
-    <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark mt-3 mb-3">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <h4 class="navbar-brand">商品管理システム</h4>
-        <div class="collapse navbar-collapse justify-content-center">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <h4 style="color: white; margin-right: 150px;">詳細画面</h4>
-                </li>
-                <li class="nav-item active">
-                    <a href="/Search" style="color: white;"><h4>一覧画面へ戻る</h4></a>
-                </li>
-            </ul>
-        </div>
-    </nav> 
-    <h2 style="text-align: center; ">ID: {{ $item->id }}<span style="margin-right: 50px;"></span>更新日: {{ $item->updated_at }}</h2>
-    <h2 style="text-align: center; margin: 25px 0 150px 0;">名前: {{ $item->name }}<span style="margin-right: 50px;"></span>種別: {{ $item->type }}</h2>
-    <h1 style="text-align: center; font-weight: bold;">{!! nl2br(e($item->detail)) !!}</h1>
+    @include('parts.navi')
+      <h2 style="text-align: center; ">ID: {{ $item->id }}<span style="margin-right: 50px;"></span>更新日: {{ $item->updated_at }}</h2>
+      <h2 style="text-align: center; margin: 25px 0 150px 0;">名前: {{ $item->name }}<span style="margin-right: 50px;"></span>種別: {{ $type[$item->type] }}</h2>
+      <h1 style="text-align: center; font-weight: bold;">{!! nl2br(e($item->detail)) !!}</h1>
 
   </div>
 
