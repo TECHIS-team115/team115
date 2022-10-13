@@ -49,9 +49,11 @@ Route::get('/Search', [SearchController::class, 'getIndex'])->name('Search');
 
 Route::middleware(['auth', 'can:adminUser'])->group(function () {
     //ユーザー管理画面への制限
-    Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
-    //商品編集画面への制限
+    Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');   
+    //ユーザ情報編集画面への制限
     Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit');
+    //ユーザ情報更新処理
+    Route::post('/user/edit', [App\Http\Controllers\UserController::class, 'update'])->name('update');
     // 一覧画面表示
     Route::get('/item', [App\Http\Controllers\ItemController::class, 'index']);
     // 登録画面表示
