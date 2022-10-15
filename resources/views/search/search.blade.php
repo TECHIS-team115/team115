@@ -15,6 +15,7 @@
         @include('parts.navi')   
             <div style="text-align: center;">
                 <h4 style="font-weight: bold; margin: 25px 0;">名前をクリックすると詳細画面が出てきます。</h4>
+                <h4 style="font-weight: bold; margin: 25px 0;">IDと名前から検索できます。</h4>
                 <form  action="{{ route('Search') }}" class="form-inline" style="margin-bottom: 25px;">
                     @csrf
                     <input class="form-control mr-sm-1" type="text" name="keyword" placeholder="キーワード検索" value="@if (isset($keyword)) {{ $keyword }} @endif">
