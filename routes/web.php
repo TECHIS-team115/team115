@@ -69,3 +69,5 @@ Route::middleware(['auth', 'can:adminUser'])->group(function () {
 });
 
 ////  ↑↑管理者権限でのアクセス制御↑↑  ////
+
+
