@@ -40,8 +40,8 @@ class SearchController extends Controller
 
         if(!empty($keyword))
         {
-            $query->where('name','like','%'.$keyword.'%');
-            $query->orWhere('id','like',$keyword);
+            $query->where('name','like','%'.$keyword.'%')->where('status', '=', 'active');
+            $query->orWhere('id','like',$keyword)->where('status', '=', 'active');
         }
 
         $data = $query->orderBy('id','asc')->where('status', '=', 'active')->paginate(5, ["*"], 'data-page');
