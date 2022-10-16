@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class UserController extends Controller
@@ -12,7 +12,6 @@ class UserController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-
     /**
     * ユーザー一覧
     *
@@ -55,31 +54,24 @@ class UserController extends Controller
         $rules=[
             'name' => 'required',
             'email' => 'required|email'.$reg,
-        ];
+            ];
         $msg=[
             'name.required' => '氏名は入力必須です。',
             'email.required' => 'メールアドレスは入力必須です。',
             'email.email' => 'メールアドレスの形式に誤りがあります。',
             'email.unique' => 'このメールアドレスは登録済です。',
-
-        ];
+            ];
         //dd($rules);
-        $validated = $request->validate($rules,$msg);
+        $role=empty($request->role) ? 0 : 1;
+        $old_role=$user->role;
 
-    
-
-
-
-
-        
+        $validated = $request->validate($rules,$msg);    
         $user->name=$request->name;
         $user->email=$request->email;
-        $user->role=empty($request->role) ? 0 : 1;
+        $user->role=$role;
         $user->save();
-
+       
+        if(auth::id()==$request->id && $old_role != $role){return redirect('/logout');}
         return redirect('/user');
-
-
     }
-
 }

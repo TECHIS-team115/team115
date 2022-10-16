@@ -33,6 +33,5 @@
             <input type="hidden" name="id" value="{{$user->id}}">
     </form>
     </div>
-    
 </body>
 </html>
