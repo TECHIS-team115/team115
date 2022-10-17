@@ -44,9 +44,6 @@
                     </tbody>
                 </table>
             </div>  
-                @foreach ($data as $val)
-                    {{ $val->id }}
-                @endforeach
                 {{ $data->appends(request()->query())->links('pagination::bootstrap-4') }}     
     </div>
     
