@@ -11,8 +11,8 @@
  
 </head>
 <body>
-    <div class="container">
-        @include('parts.navi')   
+@include('parts.navi') 
+    <div class="container">  
             <div style="text-align: center;">
                 <h4 style="font-weight: bold; margin: 25px 0;">名前をクリックすると詳細画面が出てきます。</h4>
                 <h4 style="font-weight: bold; margin: 25px 0;">IDと名前から検索できます。</h4>

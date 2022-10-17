@@ -11,8 +11,8 @@
  
 </head>
 <body>
+@include('parts.navi')
   <div class="container">
-    @include('parts.navi')
       <h2 style="text-align: center; ">ID: {{ $item->id }}<span style="margin-right: 50px;"></span>更新日: {{ $item->updated_at }}</h2>
       <h2 style="text-align: center; margin: 25px 0 150px 0;">名前: {{ $item->name }}<span style="margin-right: 50px;"></span>種別: {{ $type[$item->type] }}</h2>
       <h1 style="text-align: center; font-weight: bold;">{!! nl2br(e($item->detail)) !!}</h1>
