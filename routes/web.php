@@ -47,7 +47,7 @@ Route::get('/Search', [SearchController::class, 'getIndex'])->name('Search');
 
 ////  ↓↓管理者権限でのアクセス制御↓↓  //// *管理者は一般含む全てのurlへアクセスできる。管理者権限の設定については、providers/AuthServiceProvider.phpで定義。
 
-Route::middleware(['auth','can:adminUser'])->group(function(){
+Route::middleware(['auth', 'can:adminUser'])->group(function () {
     //ユーザー管理画面への制限
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');   
     //ユーザ情報編集画面への制限
@@ -69,3 +69,5 @@ Route::middleware(['auth','can:adminUser'])->group(function(){
 });
 
 ////  ↑↑管理者権限でのアクセス制御↑↑  ////
+
+
