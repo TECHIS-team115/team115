@@ -53,10 +53,5 @@ class SearchController extends Controller
     }
 
 
-<<<<<<< HEAD
 
 }
-=======
-   
-}
->>>>>>> 3a0b48dcd5ba54f49157cb2ef153eb4fbcd5ad42
