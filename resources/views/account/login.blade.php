@@ -2,8 +2,13 @@
 
 @section('content')
 <div class="container">
-    <div class="d-flex justify-content-center">
-        <h4>ログイン</h4>
+    <div class="d-flex flex-column justify-content-center">
+        <div class="d-flex justify-content-center h4">
+            <p>商品管理システム</p>
+        </div>
+        <div class="d-flex justify-content-center h5">
+            <p>ログイン画面</p>
+        </div>
     </div>
     <form action="{{ route('account.signin') }}" method="POST">
         @csrf
