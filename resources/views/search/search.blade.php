@@ -17,7 +17,7 @@
                 <h4 style="font-weight: bold; margin: 25px 0;">IDと名前から検索できます。</h4>
                 <form  action="{{ route('Search') }}" class="form-inline" style="margin-bottom: 25px;">
                     @csrf
-                    <input class="form-control mr-sm-1" type="text" name="keyword" placeholder="キーワード検索" value="@if (isset($keyword)) {{ $keyword }} @endif">
+                    <input class="form-control mr-sm-1" type="text" name="keyword" style="width: 25%; margin: 0 auto; margin-bottom: 10px;" placeholder="キーワード検索" value="@if (isset($keyword)) {{ $keyword }} @endif">
                     <button class="btn btn-primary" type="submit">検索</button>
                 </form>
             </div> 
