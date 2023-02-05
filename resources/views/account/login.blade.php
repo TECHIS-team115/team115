@@ -15,11 +15,11 @@
         <fieldset>
             <div class="col-lg-4 mx-auto">
                 <div class="form-group">
-                    <label for="user_email">{{ __('email') }}</label>
+                    <label for="user_email">メールアドレス</label>
                     <input type="email" class="form-control" name="user_email" id="user_email" value="{{ old('user_email') }}">
                 </div>
                 <div class="form-group">
-                    <label for="user_password">{{ __('password') }}</label>
+                    <label for="user_password">パスワード</label>
                     <input type="password" class="form-control" name="user_password" id="user_password" value="">
                 </div>
                 <div class="d-flex justify-content-center pt-3">
