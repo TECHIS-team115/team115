@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
+use Nette\Schema\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+
+        if (App::environment(['production']) || App::environment(['develop'])) {
+            URL::forceScheme('https');
+        }
     }
 }
